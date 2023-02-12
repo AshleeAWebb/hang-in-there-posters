@@ -20,7 +20,7 @@ var myOwnPosterImage = document.querySelector('#poster-image-url');
 var myOwnPosterTitle = document.querySelector('#poster-title');
 var myOwnPosterQuote = document.querySelector('#poster-quote');
 var printPosters = document.querySelector('.saved-posters-grid')
-
+var deleteSavedPoster = document.querySelector('.mini-poster')
 
 
 // we've provided you with some data to work with 👇
@@ -133,7 +133,7 @@ backToMainButton.addEventListener('click',backToMain)
 showSavedButton.addEventListener('click', showSave);
 showMyPosterButton.addEventListener('click',function() {posterShow(event)});
 saveThisPosterButton.addEventListener('click', saveThisPoster);
-
+deleteSavedPoster.addEventListener('dblclick', posterDelete);
 
 
 
@@ -223,7 +223,13 @@ function saveThisPoster() {
    } 
  }
 
-
+ function posterDelete() {
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (savedPosters[i].id == event.target.parentNode.id) {
+      savedPosters.splice(i, 1);
+    }
+  }
+}
 
 
 
