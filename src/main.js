@@ -19,8 +19,8 @@ var saved = document.querySelector('.saved-posters');
 var myOwnPosterImage = document.querySelector('#poster-image-url');
 var myOwnPosterTitle = document.querySelector('#poster-title');
 var myOwnPosterQuote = document.querySelector('#poster-quote');
-var printPosters = document.querySelector('.saved-posters-grid')
-var deleteSavedPoster = document.querySelector('.mini-poster')
+var printPosters = document.querySelector('.saved-posters-grid');
+var deleteSavedPoster = document.querySelector('.saved-posters-grid');
 
 
 // we've provided you with some data to work with 👇
@@ -224,12 +224,16 @@ function saveThisPoster() {
  }
 
  function posterDelete() {
+  var posterToBeDeleted = event.target.closest('.mini-poster');
+  if(posterToBeDeleted !== null) {
   for (var i = 0; i < savedPosters.length; i++) {
-    if (savedPosters[i].id == event.target.parentNode.id) {
+    if (savedPosters[i].id == posterToBeDeleted.id) {
       savedPosters.splice(i, 1);
     }
   }
-}
+  posterToBeDeleted.remove();
+  }
+ }
 
 
 
